@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Login }  from "./Login";
 import { Registration } from "./Registration";
 function App() {
-  return (
+  return ( 
     <Router>
          <div className="AppBody">
               {/* Header */}
