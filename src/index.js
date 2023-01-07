@@ -1,23 +1,48 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { store } from './app/store';
+import ReactDOM from 'react-dom/client';
 import App from './app/components/__layouts/App';
 import reportWebVitals from './reportWebVitals';
+import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import './index.css';
+import Login from "./app/components/__layouts/StudentAuth/Login";
+import Registration from "./app/components/__layouts/StudentAuth/Registration";
+import Recover from "./app/components/__layouts/StudentAuth/___ResetPassword";
+import RetrieveAuth from "./app/components/__layouts/StudentAuth/___RetrieveMatricNum";
+import ParentLogin from "./app/components/__layouts/ParentAuth/Login";
 
-const container = document.getElementById('root');
-const root = createRoot(container);
+const router = createBrowserRouter([
+  {
+    path: "*",
+    element: <App />,
+  },
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "/Login",
+    element: <Login />,
+  },
+  {
+    path: "/Registration",
+    element: <Registration />,
+  },
+  {
+    path: "/ParentLogin",
+    element: <ParentLogin />,
+  },
 
+  {
+    path: "/RetrieveAuth",
+    element: <RetrieveAuth />,
+  },
+  {
+    path: "/Recover",
+    element: <Recover  />,
+  },
+]);
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <RouterProvider router={ router } />
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

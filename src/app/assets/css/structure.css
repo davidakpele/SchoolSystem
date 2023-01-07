@@ -1946,7 +1946,7 @@ mode-marg {
 	height: auto;
 }
 
-.login-widget input[type='text'], .login-widget input[type='password'] {
+.login-widget input[type='text'], .login-widget input[type='password'], .login-widget input[type='date'],.login-widget input[type='tel'], .login-widget input[type='email'] {
 	border: 1px solid #E2E1E1;
 	color: #999;
 	width: 100%;
