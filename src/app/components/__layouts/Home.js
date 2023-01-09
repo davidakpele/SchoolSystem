@@ -43,7 +43,7 @@ function Home() {
               <div className="container-fluid" style={{ marginTop: '70px', marginBottom: '30px' }}>
                 <div className="row text-center">
                     <div className="col-12 cta-btn">
-                        <Link to={'/'}><button className="btn btn-danger btn-sm" type="button">Click To View Programmes&#39; Entry Requirements</button></Link>
+                        <Link to={'/ProgrammeEntryRequirements'}><button className="btn btn-danger btn-sm" type="button">Click To View Programmes&#39; Entry Requirements</button></Link>
                         <br className="clear" />
                     </div>
                 </div>

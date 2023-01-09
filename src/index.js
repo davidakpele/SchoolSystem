@@ -9,7 +9,7 @@ import Registration from "./app/components/__layouts/StudentAuth/Registration";
 import Recover from "./app/components/__layouts/StudentAuth/___ResetPassword";
 import RetrieveAuth from "./app/components/__layouts/StudentAuth/___RetrieveMatricNum";
 import ParentLogin from "./app/components/__layouts/ParentAuth/Login";
-
+import ProgrammeEntryRequirements from "./app/components/__layouts/App/ProgrammeEntryRequirements";
 const router = createBrowserRouter([
   {
     path: "*",
@@ -38,7 +38,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/Recover",
-    element: <Recover  />,
+    element: <Recover />,
+  },
+  {
+    path: "/ProgrammeEntryRequirements",
+    element: <ProgrammeEntryRequirements />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));

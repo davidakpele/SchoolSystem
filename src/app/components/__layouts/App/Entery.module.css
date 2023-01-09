@@ -1,0 +1,9 @@
+.hStyle{
+	width: auto;
+	padding: 0px;
+	margin: 0px;
+	padding: 7px;
+	background: url(http://localhost/Student/public/assets/img/menubg.png) repeat-x;
+	border-bottom: 1px solid #CCC;
+	font-size: 16px;
+}

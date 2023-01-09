@@ -3,9 +3,7 @@ import React from 'react'
 import "../assets/css/Header.css";
 import "../assets/css/structure.css";
 import logo from "../assets/img/logo.png";
-
-// import "./js/script";
-
+import { Link } from "react-router-dom";
 function Header() {
   return (
     <div className='Header'>
@@ -13,14 +11,13 @@ function Header() {
         <div className="container">
             <div className="row">
                <div className="col-12">
-                  <a href="/">
+                  <Link to={"/"}>
                      <div className="float-left">
-                           <span>
-                             <img src={logo} className="img-responsive center" 
-                                    alt="logo" />
-                           </span>
+                        <span>
+                           <img src={logo} className="img-responsive center" alt="logo" />
+                        </span>
                      </div>
-                  </a>
+                  </Link>
                </div>
                <br className="clear" />
             </div>

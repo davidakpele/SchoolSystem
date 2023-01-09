@@ -1780,14 +1780,13 @@ ul.horizontal li a {
 	padding: 5px 0px 5px 0px;
 }
 
-.h-1 {
+.hStyle{
 	width: auto;
 	padding: 0px;
 	margin: 0px;
 	padding: 7px;
 	background: url(http://localhost/Student/public/assets/img/menubg.png) repeat-x;
 	border-bottom: 1px solid #CCC;
-	/*margin-bottom:5px;*/
 	font-size: 16px;
 }
 

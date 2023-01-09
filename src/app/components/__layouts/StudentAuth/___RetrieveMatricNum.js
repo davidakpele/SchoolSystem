@@ -1,16 +1,12 @@
-import * as React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import "../../../assets/css/datetimepicker.css"
 import $ from 'jquery'
-import { useState} from 'react'
-// import { useForm } from "react-hook-form";
-// import axios from "axios";
-<script src="../../../assets/js/jquery.datetimepicker.js"></script>
 class ___RetrieveMatricNum extends React.Component {
   handleValidation = async e => {
-    const [Application, setApplication] = useState('')
-    const [Surname, setSurname] = useState('')
-    const [DOB, setDOB] = useState('')
+    useEffect(() => {
+      this.handleSubmit()
+    }, [])
   }
   handleSubmit = (e) => {
     e.preventDefault();      
@@ -19,21 +15,21 @@ class ___RetrieveMatricNum extends React.Component {
       let ApplicatioNo = $("input#ApplicatioNo").val();
       let Surname = $("input#Surname").val();
       let DateOfBirthBox = $("input#DateOfBirthBox").val();
-      if (ApplicatioNo == "") {
+      if (ApplicatioNo === "") {
          $("#RetrieveMatricNoerrorMessage").fadeIn().text("Please enter your Applicaction No/UTME Registration No");
          $("input#ApplicatioNo").focus();
          return false;
        }
-       if (Surname == "") {
+       if (Surname === "") {
          $("#RetrieveMatricNoerrorMessage").fadeIn().text("Please enter your Surname");
          $("input#Surname").focus();
          return false;
        }
-    if (DateOfBirthBox == "") {
+    if (DateOfBirthBox === "") {
       $("#RetrieveMatricNoerrorMessage").fadeIn().text("Please enter your Date Of birth");
       $("input#DateOfBirthBox").focus();
       return false;
-    } else if (ApplicatioNo != '' && Surname != '' && DateOfBirthBox != '') {
+    } else if (ApplicatioNo !== '' && Surname !== '' && DateOfBirthBox !== '') {
       const Clonedata = {
         "ApplicatioNo": ApplicatioNo,
         "Surname": Surname,
@@ -41,28 +37,42 @@ class ___RetrieveMatricNum extends React.Component {
       };
       let data = JSON.stringify(Clonedata);
       const base_url = "http://localhost/Student/PagesController/";
-      $.ajax({
-        type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-        dataType: 'JSON',
-        contentType: "application/json; charset=utf-8",
-        data: data, // our data object
-        url: base_url+'AuthMatricNUm', //the url where we want to POST
-        processData: false,
-        encode: true,
-        crossOrigin: true,
-        async: true,
-        crossDomain: true,
-        headers: {'Content-Type': 'application/json'},
-      }).then((response) => {
-        if (response.message === 200) {
-          // Redirect user to another page
-          $("#RetrieveMatricNoerrorMessage").fadeIn().text(response.message);
-        } else {
-          $("#RetrieveMatricNoerrorMessage").fadeIn().text(response.message);
-        }
-      }).fail((xhr, error) => {
-        $("#RetrieveMatricNoerrorMessage").fadeIn().text('Oops...Server is down! error');
-      });
+      fetch(base_url + 'AuthMatricNUm', { // URL
+          body: data, // data you send.
+          cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+          headers: {'content-type': 'application/json'},
+          method: 'POST', // *GET, POST, PUT, DELETE, etc.
+          mode: 'cors', // no-cors, cors, *same-origin
+          redirect: 'follow', // *manual, follow, error
+          referrer: 'no-referrer', // *client, no-referrer
+        })
+        .then(function (response) {
+          // manipulate response object
+          // check status @ response.status etc.
+          return response.json(); // parses json
+        })
+      // $.ajax({
+      //   type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
+      //   dataType: 'JSON',
+      //   contentType: "application/json; charset=utf-8",
+      //   data: data, // our data object
+      //   url: base_url+'AuthMatricNUm', //the url where we want to POST
+      //   processData: false,
+      //   encode: true,
+      //   crossOrigin: true,
+      //   async: true,
+      //   crossDomain: true,
+      //   headers: {'Content-Type': 'application/json'},
+      // }).then((response) => {
+      //   if (response.message === 200) {
+      //     // Redirect user to another page
+      //     $("#RetrieveMatricNoerrorMessage").fadeIn().text(response.message);
+      //   } else {
+      //     $("#RetrieveMatricNoerrorMessage").fadeIn().text(response.message);
+      //   }
+      // }).fail((xhr, error) => {
+      //   $("#RetrieveMatricNoerrorMessage").fadeIn().text('Oops...Server is down! error');
+      // });
     }
   
   }
@@ -75,7 +85,7 @@ class ___RetrieveMatricNum extends React.Component {
     </div>
     <div className="mini-container login-widget"> 
         <div id="RetrieveMatricNoerrorMessage" className="error error-ico" style={{ display: 'none' }}></div>
-        <form method="POST" className="form-group" onSubmit={this.handleSubmit} autoComplete="off">
+        <form method="POST" className="form-group" onSubmit={this.handleValidation} autoComplete="off">
             <div className="element">
                 <label>Application No / UTME Registration No</label>
                 <input name="ApplicatioNo" type="text" id="ApplicatioNo"  />
